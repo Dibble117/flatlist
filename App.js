@@ -1,12 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { DATA } from './Data';
+import React from 'react';
+import { FlatList, SafeAreaView } from 'react-native';
+import Row from './components/Row';
 
 export default function App() {
+
+  /*
+  const renderItem = ({ item }) => (
+    <Text>{item.lastname}</Text>
+  );
+  */
+  /*
+  function renderItem({ item }) {
+    return (
+      <Text>{item.lastname}</Text>
+    );
+  }
+  */
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={DATA}
+        renderItem={({ item }) => (
+          <Row person={item} />
+        )}
+      ></FlatList>
+    </SafeAreaView>
   );
 }
 
